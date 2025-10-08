@@ -1,4 +1,5 @@
 import { LEDIcon } from "../components/LEDIcon";
+import { useState } from "react";
 
 // Example patterns
 const aboutPattern = [
@@ -26,21 +27,35 @@ const careersPattern = [
 ];
 
 export default function Home() {
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
   return (
     <div className="min-h-screen bg-white flex items-center justify-center">
       <div className="flex items-center space-x-12">
-        <div className="flex items-center space-x-1 cursor-pointer">
-          <LEDIcon matrix={aboutPattern} />
+        <div 
+          className="flex items-center space-x-1 cursor-pointer"
+          onMouseEnter={() => setHoveredItem('about')}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
+          <LEDIcon matrix={aboutPattern} trigger={hoveredItem === 'about'} />
           <span className="text-lg tracking-whyte font-whyte text-gray-900 mb-1">About</span>
         </div>
         
-        <div className="flex items-center space-x-1 cursor-pointer">
-          <LEDIcon matrix={researchPattern} />
+        <div 
+          className="flex items-center space-x-1 cursor-pointer"
+          onMouseEnter={() => setHoveredItem('research')}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
+          <LEDIcon matrix={researchPattern} trigger={hoveredItem === 'research'} />
           <span className="text-lg tracking-whyte font-whyte text-gray-900 mb-1">Research</span>
         </div>
         
-        <div className="flex items-center space-x-1 cursor-pointer">
-          <LEDIcon matrix={careersPattern} />
+        <div 
+          className="flex items-center space-x-1 cursor-pointer"
+          onMouseEnter={() => setHoveredItem('careers')}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
+          <LEDIcon matrix={careersPattern} trigger={hoveredItem === 'careers'} />
           <span className="text-lg tracking-whyte font-whyte text-gray-900 mb-1">Careers</span>
         </div>
       </div>

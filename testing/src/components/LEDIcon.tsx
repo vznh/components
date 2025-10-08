@@ -10,9 +10,10 @@ interface LEDIconProps {
   matrix: number[][]; // 5x5 matrix of 0s and 1s
   size?: number; // Size in pixels, controls both grid and dot size
   animated?: boolean;
+  trigger?: boolean; // Triggers animation when true
 }
 
-export function LEDIcon({ matrix, size = 24, animated = false }: LEDIconProps) {
+export function LEDIcon({ matrix, size = 24, animated = false, trigger = false }: LEDIconProps) {
   // Validate matrix dimensions
   if (matrix.length !== 5 || matrix.some(row => row.length !== 5)) {
     throw new Error('LEDIcon matrix must be exactly 5x5');
@@ -25,12 +26,13 @@ export function LEDIcon({ matrix, size = 24, animated = false }: LEDIconProps) {
   
   return (
     <motion.div 
-      className="relative"
+      className="relative group-hover:animate-none"
       style={{
         width: size,
         height: size,
       }}
       whileHover="hover"
+      animate={trigger ? "hover" : "initial"}
       initial="initial"
     >
       {matrix.flat().map((value, index) => {
@@ -75,7 +77,7 @@ export function LEDIcon({ matrix, size = 24, animated = false }: LEDIconProps) {
                     transition: { 
                       delay: diagonalDistance * 0.04,
                       duration: 0.8,
-                      times: [0, 0.25, 1],
+                      times: [0, 0.3, 1],
                       ease: "easeOut"
                     }
                   }
