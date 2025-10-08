@@ -74,8 +74,8 @@ export function LEDIcon({ matrix, size = 24, animated = false }: LEDIconProps) {
                     opacity: [0, 0, 1],
                     transition: { 
                       delay: diagonalDistance * 0.04,
-                      duration: 0.2,
-                      times: [0, 0.6, 1],
+                      duration: 0.8,
+                      times: [0, 0.25, 1],
                       ease: "easeOut"
                     }
                   }
