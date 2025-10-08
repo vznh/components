@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 // Utility function to combine class names
 function cn(...classes: (string | undefined | null | false)[]): string {
@@ -23,33 +24,32 @@ export function LEDIcon({ matrix, size = 24, animated = false }: LEDIconProps) {
   const gap = Math.round(size * 0.001); // Condensed spacing between dots (0.1% of total size)
   
   return (
-    <div 
-      className={cn(
-        "relative",
-        animated && "transition-all duration-300 ease-in-out"
-      )}
+    <motion.div 
+      className="relative"
       style={{
         width: size,
         height: size,
       }}
+      whileHover="hover"
+      initial="initial"
     >
       {matrix.flat().map((value, index) => {
         const row = Math.floor(index / 5);
         const col = index % 5;
         
         // Calculate exact position for each dot with pixel-perfect rounding
-        const cellSize = Math.round((size - gap * 4) / 6); // Available space divided by 5 cells minus gaps
+        const cellSize = Math.round((size - gap * 4) / 6.5); // Available space divided by 5 cells minus gaps
         const x = Math.round(col * (cellSize + gap));
         const y = Math.round(row * (cellSize + gap));
+        
+        // Calculate diagonal distance from bottom-left (4,0) for stagger effect
+        const diagonalDistance = (4 - row) + col;
         
         return (
           <div key={`${row}-${col}`}>
             {/* Dormant dot - always present */}
             <div
-              className={cn(
-                "absolute bg-gray-400 opacity-30",
-                animated && "transition-all duration-200 ease-in-out"
-              )}
+              className="absolute bg-gray-400 opacity-30"
               style={{
                 left: x + (cellSize - dormantDotSize) / 2,
                 top: y + (cellSize - dormantDotSize) / 2,
@@ -60,22 +60,31 @@ export function LEDIcon({ matrix, size = 24, animated = false }: LEDIconProps) {
             
             {/* Active dot - overlays dormant dot when value === 1 */}
             {value === 1 && (
-              <div
-                className={cn(
-                  "absolute bg-[#1E1919]",
-                  animated && "transition-all duration-200 ease-in-out"
-                )}
+              <motion.div
+                className="absolute bg-[#1E1919]"
                 style={{
                   left: x + (cellSize - activeDotSize) / 2,
                   top: y + (cellSize - activeDotSize) / 2,
                   width: activeDotSize,
                   height: activeDotSize,
                 }}
+                variants={{
+                  initial: { opacity: 1 },
+                  hover: { 
+                    opacity: [0, 0, 1],
+                    transition: { 
+                      delay: diagonalDistance * 0.04,
+                      duration: 0.2,
+                      times: [0, 0.6, 1],
+                      ease: "easeOut"
+                    }
+                  }
+                }}
               />
             )}
           </div>
         );
       })}
-    </div>
+    </motion.div>
   );
 }

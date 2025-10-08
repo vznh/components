@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'whyte': ['Whyte', 'sans-serif'],
+      },
+      letterSpacing: {
+        'whyte': '-0.02em', // -2% tracking
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
