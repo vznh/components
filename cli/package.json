@@ -1,0 +1,25 @@
+{
+  "name": "@vznh/components",
+  "version": "1.0.4",
+  "type": "module",
+  "bin": {
+    "ledicon": "bin/led.js"
+  },
+  "files": [
+    "bin",
+    "templates"
+  ],
+  "description": "LED-inspired UI component to add as a loading, interactive, or static icon in your project.",
+  "keywords": [
+    "react",
+    "nextjs",
+    "component",
+    "cli",
+    "led"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "fs-extra": "^11.3.2"
+  }
+}
