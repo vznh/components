@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vznh/led": "../ledicon",
     "framer-motion": "^12.23.22",
     "led-icon": "file:../",
     "next": "14.2.3",
