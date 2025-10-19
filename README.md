@@ -2,13 +2,17 @@
 This library is a bunch of handmade components that I've found to be replicable across multiple projects, yet unique amongst the crowd.
 
 ## Components
-**LED**
-[![LED Preview](https://i.imgur.com/eAmRTJU.gif)](https://imgur.com/a/XbaxUnW)
-I use this for animations, running numerous frames as a loading icon.
+**LED**  
+I use this for animations, running numerous frames as a loading icon.  
 
-**Reactive**
-[![Reactive: Preview](https://i.imgur.com/zdDFAiY.gif)
-I use this for drastically changing numbers that will **always** pull the visual hierarchy, so might as well make it pretty.
+[![LED Preview](https://i.imgur.com/eAmRTJU.gif)](https://imgur.com/a/XbaxUnW)  
+
+
+**Reactive**  
+I use this for drastically changing numbers that will **always** pull the visual hierarchy.
+
+[![Reactive: Preview](https://i.imgur.com/zdDFAiY.gif)](https://imgur.com)
+
 
 ## Installation
 ```bash
