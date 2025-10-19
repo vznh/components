@@ -40,4 +40,4 @@ Thank you for your interest to contributing to Reactive.
 Jason Son ([@vznh](https://github.com/vznh))
 
 ## License
-Licensed under the MIT License, see [LICENSE](https://github.com/vznh/led/blob/master/LICENSE).
+Licensed under the MIT License, see [LICENSE](https://github.com/vznh/components/blob/master/LICENSE).
