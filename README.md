@@ -2,6 +2,9 @@
 This library is a bunch of handmade components that I've found to be replicable across multiple projects, yet unique amongst the crowd.
 
 ## Installation
+```bash
+npx @vznh/components add component-name
+```
 
 ## Contributing
 Thank you for your interest to contributing to @vznh/components.
