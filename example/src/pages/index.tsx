@@ -1,5 +1,6 @@
 import { LEDIcon } from "@/components/led-icon";
-import { useState } from "react";
+import { Reactive } from "@/components/reactive";
+import { useState, useEffect } from "react";
 
 // Example patterns
 const aboutPattern = [
@@ -28,11 +29,20 @@ const careersPattern = [
 
 export default function Home() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [testValue, setTestValue] = useState<number>(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTestValue(Math.random() * 100);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center">
+    <div className="min-h-screen bg-white flex flex-col gap-y-12 items-center justify-center">
       <div className="flex items-center space-x-12">
-        <div 
+        <div
           className="flex items-center space-x-2 cursor-pointer"
           onMouseEnter={() => setHoveredItem('about')}
           onMouseLeave={() => setHoveredItem(null)}
@@ -40,8 +50,8 @@ export default function Home() {
           <LEDIcon matrix={aboutPattern} trigger={hoveredItem === 'about'} />
           <span className="text-lg tracking-whyte font-whyte text-gray-900">About</span>
         </div>
-        
-        <div 
+
+        <div
           className="flex items-center space-x-2 cursor-pointer"
           onMouseEnter={() => setHoveredItem('research')}
           onMouseLeave={() => setHoveredItem(null)}
@@ -49,8 +59,8 @@ export default function Home() {
           <LEDIcon matrix={researchPattern} trigger={hoveredItem === 'research'} />
           <span className="text-lg tracking-whyte font-whyte text-gray-900">Research</span>
         </div>
-        
-        <div 
+
+        <div
           className="flex items-center space-x-2 cursor-pointer"
           onMouseEnter={() => setHoveredItem('careers')}
           onMouseLeave={() => setHoveredItem(null)}
@@ -58,6 +68,10 @@ export default function Home() {
           <LEDIcon matrix={careersPattern} trigger={hoveredItem === 'careers'} />
           <span className="text-lg tracking-whyte font-whyte text-gray-900">Careers</span>
         </div>
+      </div>
+
+      <div className="flex items-center space-x-12">
+        <Reactive value={testValue} className="text-4xl tracking-tight"/>
       </div>
     </div>
   );
