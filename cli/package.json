@@ -1,9 +1,9 @@
 {
   "name": "@vznh/components",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "type": "module",
   "bin": {
-    "ledicon": "bin/led.js"
+    "@vznh/components": "bin/cli.js"
   },
   "files": [
     "bin",

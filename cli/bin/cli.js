@@ -13,16 +13,20 @@ const cmd = process.argv[2];
 
 if (!cmd || cmd === "help" || cmd === "--help") {
   console.log(`
-${chalk.cyan("ledicon")} — Add the LEDIcon component to your project's src/components/ui directory.
+${chalk.cyan("@vznh/components")} — Add UI components to your project's src/components/ui directory.
 
 Usage:
-  npx @vznh/components add led-icon
+  npx @vznh/components add <component>
+
+Components:
+  led-icon  - LED-inspired icon component
+  reactive  - Animated number transition component
 `);
   process.exit(0);
 }
 
 if (cmd === "add") {
-  const component = process.argv[3] || "led-icon";
+  const component = process.argv[3];
   const templatePath = path.join(__dirname, "../templates", `${component}.tsx`);
   const destPath = path.join(cwd, "src/components/ui", `${component}.tsx`);
 
@@ -34,7 +38,7 @@ if (cmd === "add") {
   await fs.ensureDir(path.dirname(destPath));
   await fs.copyFile(templatePath, destPath);
 
-  console.log(chalk.green(`✅ Added ${component}.tsx → src/components/ui/`));
+  console.log(chalk.green(`Added ${component}.tsx → src/components/ui/.`));
   process.exit(0);
 }
 
