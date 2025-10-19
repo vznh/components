@@ -1,6 +1,15 @@
 # @vznh/components
 This library is a bunch of handmade components that I've found to be replicable across multiple projects, yet unique amongst the crowd.
 
+## Components
+**LED**
+[![LED Preview](https://i.imgur.com/eAmRTJU.gif)](https://imgur.com/a/XbaxUnW)
+I use this for animations, running numerous frames as a loading icon.
+
+**Reactive**
+[![Reactive: Preview](https://i.imgur.com/zdDFAiY.gif)
+I use this for drastically changing numbers that will **always** pull the visual hierarchy, so might as well make it pretty.
+
 ## Installation
 ```bash
 npx @vznh/components add component-name
